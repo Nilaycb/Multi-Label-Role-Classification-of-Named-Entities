@@ -1,45 +1,79 @@
-# Entity Framing in Narratives: Multi-Label Role Classification of Named Entities 
+# Entity Framing in Narratives: Multi-Label Role Classification of Named Entities
 
-## XLM-RoBERTa-base + Attention Layer + 2 Output Heads (with Focal Loss) Model
+## Model Overview
+
+This project uses a **XLM-RoBERTa-base** model with an attention layer and two output heads to perform multi-label role classification of named entities in text. The model is designed to predict both the **main role** and **fine-grained roles** of named entities in a multilingual dataset.
+
+The architecture includes the following components:
+- **XLM-RoBERTa-base**: A powerful multilingual transformer model designed for cross-lingual tasks.
+- **Attention Mechanism**: Helps the model focus on the relevant parts of the input text.
+- **Focal Loss**: Addresses class imbalance, improving the model's ability to handle underrepresented classes.
+
 ![Model Architecture](model_architecture.png)
 
-* **Dataset_EN_PT:** This folder contains the text data for the articles. Each text file is named with the corresponding article ID.
-* **train.csv:** Contains training data with columns `article_id`, `main_role`, `fine_grained_roles`.
-* **test.csv:** Contains test data with the same columns as `train.csv`.
-* **val.csv:** Contains validation data with the same columns as `train.csv`.
-* **results:** Stores the trained model outputs, including metrics, predictions, and the model itself.
-* **model.ipynb:** The Jupyter notebook containing the project code, including data loading, model training, evaluation, and visualization.
+## Project Files
 
-## Model and Approach
+- **Dataset_EN_PT**: Contains the text data for the articles. Each text file is named according to the corresponding article ID.
+- **train.csv**: Training data with columns `article_id`, `main_role`, and `fine_grained_roles`.
+- **test.csv**: Test data with the same columns as `train.csv`.
+- **val.csv**: Validation data with the same columns as `train.csv`.
+- **results**: Contains the trained model's outputs, including metrics, predictions, and the model itself.
+- **model.ipynb**: Jupyter notebook with code for data loading, model training, evaluation, and visualization.
 
-This project uses the following:
+## Methodology
 
-* **XLM-RoBERTa:** A powerful multilingual language model for text processing.
-* **Focal Loss:** Addresses class imbalance during training.
-* **Attention Mechanism:** Focuses on relevant parts of the text.
-* **Evaluation Metrics:** Accuracy, precision, recall, F1-score, and exact match ratio (EMR) are used to assess model performance.
+The methodology combines key components for effective multi-label classification:
+
+1. **Pretrained Model**: We use the **XLM-RoBERTa-base** model, a multilingual transformer with 278 million parameters, trained to handle various cross-lingual tasks. This model processes the input text and generates contextual embeddings for named entity classification.
+
+2. **Loss Function**: The **Adapted Focal Loss** is used to tackle the class imbalance problem. The Focal Loss applies a dynamic modulating factor to focus on hard-to-classify examples, which is particularly useful in tasks with imbalanced class distributions.
+
+    ### Adapted Focal Loss Formula
+    \[
+    FL(p_t) = \alpha (1 - p_t)^\gamma \cdot BCE(p_t)
+    \]
+    Where:
+    - \( BCE(p_t) \): Binary cross-entropy loss
+    - \( p_t \): Predicted probability derived from logits
+    - \( \alpha \): Class balancing factor
+    - \( \gamma \): Focusing parameter to reduce the weight of easy-to-classify examples
+
+3. **Model Architecture**: The architecture uses **XLM-RoBERTa-base** as the core transformer model, with two classification heads for predicting the **main role** and **sub roles** of named entities. The model uses multi-task learning, where shared representations from the transformer encoder are used for both tasks.
+
+    - **Input Layer**: Tokenized input sequences with attention masks.
+    - **Transformer Encoder**: Processes input through 12 layers of self-attention and feed-forward networks.
+    - **Dropout Layer**: Prevents overfitting.
+    - **Main Role & Sub Role Classifiers**: Parallel classification heads that predict the main role and fine-grained roles.
+
+## Evaluation Metrics
+
+The model's performance is evaluated using:
+- **Accuracy**
+- **Precision**
+- **Recall**
+- **F1-score**
+- **Exact Match Ratio (EMR)**
 
 ## Running the Project
 
-1. **Set up Google Colab:** Create a new Colab notebook and upload the project files.
-2. **Install Dependencies:** Install necessary libraries like `transformers`, `torch`, `sklearn`, and `pandas`.
-3. **Mount Google Drive:** Mount your Google Drive to access the data.
-4. **Run the Notebook:** Execute the cells in the `model.ipynb` file sequentially. This will load the data, train the model, evaluate its performance, and visualize the results.
+### Setup Instructions:
+1. **Set up Google Colab**: Create a new Colab notebook and upload the project files.
+2. **Install Dependencies**: Install necessary libraries like `transformers`, `torch`, `sklearn`, and `pandas`.
+3. **Mount Google Drive**: Mount your Google Drive to access the data.
+4. **Run the Notebook**: Execute the cells in the `model.ipynb` notebook sequentially to train, evaluate, and visualize the results.
 
-## Results
-
-The results are saved in the `results` folder. You can find the evaluation metrics and predicted roles there. The notebook also displays plots of metrics during training.
+### Results:
+The results are saved in the `results` folder, including evaluation metrics, predicted roles, and trained model outputs. Plots of metrics during training are also displayed within the notebook.
 
 ## Future Work
 
-Possible improvements and extensions for the project:
-
-* **Hyperparameter Tuning:** Experiment with different hyperparameters to optimize model performance.
-* **Data Augmentation:** Increase the training data size to improve robustness.
-* **Ensemble Methods:** Combine multiple models for better generalization.
-* **Interpretability:** Investigate methods to understand the model's predictions.
+Possible improvements and extensions for this project include:
+- **Hyperparameter Tuning**: Experimenting with different hyperparameters for better model performance.
+- **Data Augmentation**: Expanding the training dataset to improve model robustness.
+- **Ensemble Methods**: Using multiple models to increase generalization.
+- **Interpretability**: Investigating methods to interpret model predictions for better insights.
 
 ## Acknowledgements
 
-* XLM-RoBERTa: Developed by Facebook AI
-* Hugging Face Transformers: A library for working with transformer models
+- **XLM-RoBERTa**: Developed by Facebook AI.
+- **Hugging Face Transformers**: A library for working with transformer models.

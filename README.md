@@ -4,7 +4,7 @@
 
 This project uses a **XLM-RoBERTa-base** model with an attention layer and two output heads to perform multi-label role classification of named entities in text. The model is designed to predict both the **main role** and **fine-grained roles** of named entities in a multilingual dataset.
 
-The dataset used in this project is from **SemEval 2025 Task 10**: [Propaganda Detection](https://propaganda.math.unipd.it/semeval2025task10/), and the task being addressed is **Task 1: Role Classification of Named Entities**.
+The dataset used in this project is from **SemEval 2025 Task 10**: [Propaganda Detection](https://propaganda.math.unipd.it/semeval2025task10/), and the problem addressed in this project is **Subtask 1: Role Classification of Named Entities**.
 
 The architecture includes the following components:
 - **XLM-RoBERTa-base**: A powerful multilingual transformer model designed for cross-lingual tasks.
@@ -70,10 +70,11 @@ Possible improvements and extensions for this project include:
 
 - **XLM-RoBERTa**: Developed by Facebook AI.
 - **Hugging Face Transformers**: A library for working with transformer models.
+- - **SemEval 2025 Task 10**: For providing the dataset and framework for evaluating the task of entity role classification in narratives.
+- **Focal Loss**: Introduced by [Lin et al.](https://arxiv.org/abs/1708.02002), Focal Loss helps improve model performance by focusing on hard-to-classify examples and addressing class imbalance, which is crucial for this task.
 - **Google Colab**: A platform that provides free access to powerful computing resources for model training and experimentation.
 - **Pytorch**: Used for implementing and training deep learning models.
 - **Scikit-learn**: Used for metrics and machine learning utilities.
 - **Pandas**: Used for data manipulation and analysis.
 - **OpenAI**: For providing access to GPT-3, a source of inspiration for the development and understanding of large language models.
 - **The Research Community**: For contributing to the continuous development of transformer models, attention mechanisms, and the concept of multi-task learning.
-- **SemEval 2025 Task 10**: For providing the dataset and framework for evaluating the task of entity role classification in narratives.

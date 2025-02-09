@@ -26,7 +26,7 @@ The architecture includes the following components:
 
 The methodology combines key components for effective multi-label classification:
 
-1. **Pretrained Model**: We use the **XLM-RoBERTa-base** model, a multilingual transformer with 278 million parameters, trained to handle various cross-lingual tasks. This model processes the input text and generates contextual embeddings for named entity classification.
+1. **Pretrained Model**: the **XLM-RoBERTa-base** model, a multilingual transformer with 278 million parameters, trained to handle various cross-lingual tasks is used. This model processes the input text and generates contextual embeddings for named entity classification.
 
 2. **Loss Function**: The **Adapted Focal Loss** is used to tackle the class imbalance problem. The Focal Loss applies a dynamic modulating factor to focus on hard-to-classify examples, which is particularly useful in tasks with imbalanced class distributions.
 

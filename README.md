@@ -70,7 +70,7 @@ Possible improvements and extensions for this project include:
 
 - **XLM-RoBERTa**: Developed by Facebook AI.
 - **Hugging Face Transformers**: A library for working with transformer models.
-- - **SemEval 2025 Task 10**: For providing the dataset and framework for evaluating the task of entity role classification in narratives.
+- **SemEval 2025 Task 10**: For providing the dataset and framework for evaluating the task of entity role classification in narratives.
 - **Focal Loss**: Introduced by [Lin et al.](https://arxiv.org/abs/1708.02002), Focal Loss helps improve model performance by focusing on hard-to-classify examples and addressing class imbalance, which is crucial for this task.
 - **Google Colab**: A platform that provides free access to powerful computing resources for model training and experimentation.
 - **Pytorch**: Used for implementing and training deep learning models.

@@ -1,0 +1,17 @@
+digraph "Model Architecture" {
+	Input [label="Input IDs + Attention Mask"]
+	BaseModel [label="XLM-RoBERTa (Transformer Encoder)"]
+	Attention [label="Attention Layer"]
+	Dropout [label=Dropout]
+	MainClassifier [label="Main Role Classifier (Linear)"]
+	SubClassifier [label="Sub Role Classifier (Linear)"]
+	OutputMain [label="Main Role Predictions"]
+	OutputSub [label="Sub Role Predictions"]
+	Input -> BaseModel
+	BaseModel -> Attention
+	Attention -> Dropout
+	Dropout -> MainClassifier
+	Dropout -> SubClassifier
+	MainClassifier -> OutputMain
+	SubClassifier -> OutputSub
+}

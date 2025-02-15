@@ -1,10 +1,10 @@
 # Entity Framing in Narratives: Multi-Label Role Classification of Named Entities
 
-## Model Overview
-
 This project uses a **XLM-RoBERTa-base** model with an attention layer and two output heads to perform multi-label role classification of named entities in text. The model is designed to predict both the **main role** and **fine-grained roles** of named entities in a multilingual dataset.
 
 The dataset used in this project is from **SemEval 2025 Task 10**: [Propaganda Detection](https://propaganda.math.unipd.it/semeval2025task10/), and the problem addressed in this project is **Subtask 1: Role Classification of Named Entities**.
+
+## Model Architecture
 
 The architecture includes the following components:
 - **XLM-RoBERTa-base**: A powerful multilingual transformer model designed for cross-lingual tasks.
